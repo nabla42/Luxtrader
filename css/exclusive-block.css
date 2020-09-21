@@ -1,0 +1,34 @@
+/* EXCLUSIVE BLOCK */
+
+.exclusive-block__title{
+    margin-top: 34px;
+    padding: 3px 0 10px;
+}
+.exclusive-block__subtitle{
+    text-align: center;
+    margin-top: 16px;
+}
+.exclusive-block__text{
+    margin-top: 27px;
+    max-width: 688px;
+    text-align: center;
+}
+
+/* DECOR */
+.decor-rhomb{
+    width: 76px;
+    height: 76px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+
+    transform: rotate(-45deg);
+}
+.decor-rhomb__wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    transform: rotate(45deg);
+}
