@@ -82,18 +82,14 @@ document.documentElement.addEventListener("click", function (e) {
 //burger set
 function toggleClass(targetName, newClass, isTag){
     let arrayTarget = arrayOfSelectors(targetName, isTag);
-    // for ( let i = 0; i < arrayTarget.length; i++ ){
         if( arrayTarget[0].classList.contains(newClass) ){
             removeClass(targetName, newClass, 0, isTag);
         }
         else
             addClass(targetName, newClass, 0, isTag);
-    // }
 }
 document.querySelector('.burger').addEventListener("click", function () {
-    // addClass("header-container__menu-list-wrap", 'unhidden-elem', 0);
-    // addClass("section", 'blur-elem', 0, true);
-    // addClass("body", 'lock', 0, true);
+    toggleClass("burger", 'active');
     toggleClass("header-container__menu-list-wrap", 'unhidden-elem');
     toggleClass("section", 'blur-elem',true);
     toggleClass("body", 'lock', true);
@@ -101,7 +97,6 @@ document.querySelector('.burger').addEventListener("click", function () {
 
 //decor border in 'categories-lots' settings
 function elemDisplay(className, maxWidth, inverted, delay){
-    // let elemArr = document.getElementsByClassName(className);
     if ( (window.innerWidth <= maxWidth && !inverted) || (window.innerWidth > maxWidth && inverted) ) {
         addClass(className, 'disable-elem', delay);
     }
