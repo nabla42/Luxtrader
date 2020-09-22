@@ -1,5 +1,4 @@
 'use strict'
-//abstract
 //
 function arrayOfSelectors(selectorName, isTag = false) {
     let targetElem;
@@ -25,9 +24,17 @@ function  removeClass(targetName, oldClass, delay, isTag = false) {
 }
 //switcher
 function switchClass(targetElemName, oldClass, newClass){
-    // let elemArr = document.getElementsByClassName(targetElemClass);
     addClass(targetElemName, newClass, 0);
     removeClass(targetElemName, oldClass, 0);
+}
+//toggle
+function toggleClass(targetName, newClass, isTag){
+    let arrayTarget = arrayOfSelectors(targetName, isTag);
+    if( arrayTarget[0].classList.contains(newClass) ){
+        removeClass(targetName, newClass, 0, isTag);
+    }
+    else
+        addClass(targetName, newClass, 0, isTag);
 }
 //
 function addNewNode(baseName, targetName) {
@@ -80,21 +87,13 @@ document.documentElement.addEventListener("click", function (e) {
     }
 });
 //burger set
-function toggleClass(targetName, newClass, isTag){
-    let arrayTarget = arrayOfSelectors(targetName, isTag);
-        if( arrayTarget[0].classList.contains(newClass) ){
-            removeClass(targetName, newClass, 0, isTag);
-        }
-        else
-            addClass(targetName, newClass, 0, isTag);
-}
 document.querySelector('.burger').addEventListener("click", function () {
     toggleClass("burger", 'active');
     toggleClass("header-container__menu-list-wrap", 'unhidden-elem');
     toggleClass("section", 'blur-elem',true);
+    toggleClass("footer", 'blur-elem',true);
     toggleClass("body", 'lock', true);
 });
-
 //decor border in 'categories-lots' settings
 function elemDisplay(className, maxWidth, inverted, delay){
     if ( (window.innerWidth <= maxWidth && !inverted) || (window.innerWidth > maxWidth && inverted) ) {

@@ -28,7 +28,7 @@
     /*justify-content: center;*/
     /* border: 1px dotted red; */
     position: relative;
-    /*margin: 0 10px;*/
+    margin: 0 10px;
     width: 100%;
 }
 .row-template__item-horizontal{
@@ -101,7 +101,7 @@
         justify-content: space-around;
     }
     .row-template__item{
-        flex: 0 1 40%;
+        /*flex: 0 1 26%;*/
     }
     .row-template__title{
         font-size: calc(17px + 6 * ((100vw - 480px) / (768 - 480)));

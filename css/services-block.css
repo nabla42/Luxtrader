@@ -11,9 +11,13 @@
 .services__title{
     margin-top: 43px;
     letter-spacing: 0.1em;
+    min-height: 48px;
 }
 .services__subtext{
-    margin-top: 22px;
+    /*margin-top: 22px;*/
+}
+.services__elem{
+    margin: 0 5px;
 }
 
 /*BUTTON*/
@@ -27,6 +31,7 @@
 }
 .services__btn span{
     position: relative;
+    transition: all 0.3s ease-in-out;
 }
 .services__btn::before,
 .services__btn::after{
@@ -36,20 +41,37 @@
     width: 20%;
     background-color: #bb9c66;
     height: 1px;
+    transition: all 0.3s ease-in-out;
 }
 .services__btn::before{
     top: 50%;
-    left: 0%;
+    left: 0;
 }
 .services__btn::after{
     bottom: 50%;
-    right: 0%;
+    right: 0;
+}
+.services__btn:hover::before{
+    width: 0;
+    left: -20%;
+}
+.services__btn:hover::after{
+    width: 0;
+    right: -20%;
+}
+.services__btn:hover span{
+    text-shadow: 0 0 2px;
 }
 @media screen and (max-width: 800px) {
     .services__btn{
         font-size: 15px;
     }
-    .services__btn{
-        width: 80%;
+}
+@media screen and (max-width: 480px) {
+    .services__elem {
+        margin-bottom: 50px;
+    }
+    .services__title {
+        margin-top: 25px;
     }
 }
