@@ -126,16 +126,14 @@ a{
     letter-spacing: 0.15em;
     color: #ffffff;
 }
-.default-text{
+.default-text {
     font-family: "PFDinTextCondPro";
     font-size: 15px;
     line-height: 25px;
     color: #ffffff;
     letter-spacing: 0.1em;
 }
-.subtitle_black-text{
-    color: black;
-}
+
 .btn{
     font-family: "PFDinTextCondPro";
     text-transform: uppercase;
@@ -154,9 +152,6 @@ a{
     -moz-border-image: -moz-linear-gradient(#c3a673 , #8c632d);
     -webkit-border-image: -webkit-linear-gradient(#c3a673 , #8c632d);
     border-image-slice: 1;
-}
-.btn_black-text{
-    color: black;
 }
 .decor-triangle{
     position: absolute;
@@ -184,10 +179,23 @@ a{
     color: #000000;
 }
 
-
+.text_black-text{
+    color: black;
+}
 .disable-elem{
     display: none;
 }
+.active-elem{
+    display: block;
+}
+.blur-elem{
+    filter: blur(8px);
+}
+.lock{
+    overflow: hidden;
+}
+
+/*~~~*/
 .container__actual-info{
 	padding-top: 69px;
 }

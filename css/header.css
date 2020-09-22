@@ -21,6 +21,7 @@
 .header-container__logo{
     position: relative;
     top: -5px;
+    z-index: 6;
 }
 .header-container__menu-list{
     padding: 0;
@@ -29,6 +30,10 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
+}
+.header-container__menu-list-wrap{
+    display: flex;
     width: 47%;
 }
 .menu-list__item,
@@ -48,9 +53,11 @@
     justify-content: space-between;
     left: -28px;
     position: relative;
+    /*z-index: 6;*/
 
     /*border: 5px dotted red;*/
 }
+
 .personal-header__elem{
     display: flex;
     flex-direction: row;
@@ -64,7 +71,7 @@
     cursor: pointer;
 }
 .user-menu__list{
-    display: none;
+    /*display: none;*/
     position: absolute;
     padding: 8px 25px 31px 22px;
     margin: 29px 0 0;
@@ -99,15 +106,50 @@
     background: url(../images/header/user-menu/hammer.png) left center no-repeat;
 }
 @media screen and (max-width: 800px) {
+    /*section{*/
+    /*    filter: blur(5px);*/
+    /*}*/
+    .header{
+        z-index: 50;
+        position: fixed;
+    }
+    .header-container__menu-list-wrap{
+        width: 100%;
+        position: fixed;
+        top: -100%;
+        left: 0;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        transition: all 0.3s ease 0s;
+        z-index: 5;
+    }
+    .header-container__menu-list-wrap.unhidden-elem{
+        top: 0;
+    }
     .header-container__menu-list{
-        display: none;
+        top: 0;
+        left: 0;
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        padding: 70px 0 0;
+        z-index: 5;
+        /*width: 100%;*/
+    }
+    .header-container__menu-list .menu-list__item{
+        font-size: 30px;
+    }
+    .header-container__menu-list li{
+        padding: 30px 0;
+        text-align: center;
     }
     .burger {
         display: block;
         position: relative;
         width: 40px;
         height: 20px;
-        z-index: 3;
+        z-index: 6;
+        cursor: pointer;
     }
     .burger span{
         position: absolute;

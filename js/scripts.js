@@ -1,21 +1,33 @@
 'use strict'
 //abstract
 //
-function  addClass(targetElem, newClass, delay) {
+function arrayOfSelectors(selectorName, isTag = false) {
+    let targetElem;
+    if(!isTag){
+        targetElem = document.getElementsByClassName(selectorName);
+    }
+    else{
+        targetElem = document.getElementsByTagName(selectorName);
+    }
+    return targetElem;
+}
+function  addClass(targetName, newClass, delay, isTag = false) {
+    let targetElem = arrayOfSelectors(targetName, isTag);
     for (let i = delay; i < targetElem.length; i++){
         targetElem[i].classList.add(newClass);
     }
 }
-function  removeClass(targetElem, oldClass, delay) {
+function  removeClass(targetName, oldClass, delay, isTag = false) {
+    let targetElem = arrayOfSelectors(targetName, isTag);
     for (let i = delay; i < targetElem.length; i++){
         targetElem[i].classList.remove(oldClass);
     }
 }
 //switcher
-function switchClass(targetElemClass, oldClass, newClass){
-    let elemArr = document.getElementsByClassName(targetElemClass);
-    addClass(elemArr, newClass, 0);
-    removeClass(elemArr, oldClass, 0);
+function switchClass(targetElemName, oldClass, newClass){
+    // let elemArr = document.getElementsByClassName(targetElemClass);
+    addClass(targetElemName, newClass, 0);
+    removeClass(targetElemName, oldClass, 0);
 }
 //
 function addNewNode(baseName, targetName) {
@@ -60,22 +72,41 @@ function setTimer(hour, min, sec, ms, selector){
 //specific
 //header for phone mode (screen max-width: 768)
 document.querySelector('.user-menu').addEventListener("click", function () {
-    document.querySelector('.user-menu__list').style.display = 'block';
+    switchClass('user-menu__list', 'disable-elem', 'active-elem');
 });
 document.documentElement.addEventListener("click", function (e) {
     if(!e.target.closest('.personal-header') ){
-        document.querySelector('.user-menu__list').style.display = "none";
+        switchClass('user-menu__list', 'active-elem', 'disable-elem');
     }
+});
+//burger set
+function toggleClass(targetName, newClass, isTag){
+    let arrayTarget = arrayOfSelectors(targetName, isTag);
+    // for ( let i = 0; i < arrayTarget.length; i++ ){
+        if( arrayTarget[0].classList.contains(newClass) ){
+            removeClass(targetName, newClass, 0, isTag);
+        }
+        else
+            addClass(targetName, newClass, 0, isTag);
+    // }
+}
+document.querySelector('.burger').addEventListener("click", function () {
+    // addClass("header-container__menu-list-wrap", 'unhidden-elem', 0);
+    // addClass("section", 'blur-elem', 0, true);
+    // addClass("body", 'lock', 0, true);
+    toggleClass("header-container__menu-list-wrap", 'unhidden-elem');
+    toggleClass("section", 'blur-elem',true);
+    toggleClass("body", 'lock', true);
 });
 
 //decor border in 'categories-lots' settings
 function elemDisplay(className, maxWidth, inverted, delay){
-    let elemArr = document.getElementsByClassName(className);
+    // let elemArr = document.getElementsByClassName(className);
     if ( (window.innerWidth <= maxWidth && !inverted) || (window.innerWidth > maxWidth && inverted) ) {
-        addClass(elemArr, 'disable-elem', delay);
+        addClass(className, 'disable-elem', delay);
     }
     else if ( (window.innerWidth > maxWidth && !inverted) || (window.innerWidth <= maxWidth && inverted) ) {
-        removeClass(elemArr, 'disable-elem', delay);
+        removeClass(className, 'disable-elem', delay);
     }
 }
 window.addEventListener('DOMContentLoaded', elemDisplay.bind(null, 'decor-border', 480, 0, 0));
